@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="bg-white dark:bg-gray-900 flex flex-col mx-auto justify-center items-center w-[32rem]">
+
+        <!-- Titulo -->
+        <div class="py-6 w-full lg:py-16">
+            <h3 class="text-base font-medium tracking-tight leading-none text-gray-700 md:text-lg lg:text-lg dark:text-white">PASO: 1</h3>
+            <h3 class="text-lg font-extrabold tracking-tight leading-none text-gray-700 md:text-xl lg:text-xl dark:text-white">Cargar Numero de Orden</h3>
+        </div>
+
+        <!-- Selector de archivos -->
+        <form class="w-full">
+            <label for="numero-orden" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Numero de Orden:</label>
+            <input type="number" id="numero-orden" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="123456" required>
+        </form>
+
+     <!-- Botones de acción -->
+        <div class="mt-4 w-full flex justify-end">
+            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg">Enviar/Subir</button>
+        </div>
+
+    </section>
+
+        <section class="bg-white dark:bg-gray-900 flex flex-col mx-auto justify-center items-center w-[32rem]">
+
+        <!-- Titulo -->
+        <div class="py-6 w-full lg:py-16">
+            <h3 class="text-base font-medium tracking-tight leading-none text-gray-700 md:text-lg lg:text-lg dark:text-white">PASO: 2</h3>
+            <h3 class="text-lg font-extrabold tracking-tight leading-none text-gray-700 md:text-xl lg:text-xl dark:text-white">Cargar Boleta</h3>
+        </div>
+
+        <!-- Selector de archivos -->
+        <form class="w-full">
+        <div class="flex flex-col lg:flex-row lg:gap-x-11">
+            <div class="flex flex-col w-full">
+                <label for="monto-abono" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Monto de Abono:</label>
+                <input type="number" id="monto-abono" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="123456" required>
+            </div>
+            <div class="flex flex-col w-full">
+                <label for="numero-boleta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Numero de Boleta:</label>
+                <input type="number" id="numero-boleta" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="123456" required>
+            </div>
+        </div>
+        </form>
+
+     <!-- Botones de acción -->
+        <div class="mt-4 w-full flex justify-end">
+            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg">Enviar/Subir</button>
+        </div>
+
+    </section>
+
+
+<script>
+</script>
+
+{% endblock %}
