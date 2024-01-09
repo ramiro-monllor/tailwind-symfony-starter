@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="bg-white dark:bg-gray-900 flex items-center flex-col">
+
+        <!-- Titulo -->
+        <div class="py-6 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
+            <h1 class="text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Subir archivos</h1>
+        </div>
+
+        <!-- Selector de archivos -->
+        <div class="flex items-center justify-center w-3/4 lg:w-1/2 rounded-lg mb-2">
+            <label for="dropzone-file" class="py-8 flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600" ondragover="handleDragOver(event)" ondrop="handleDrop(event)">
+                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                    <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                    </svg>
+                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Haga clic para cargar</span> o arrastre y suelte</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                </div>
+                    <input id="dropzone-file" type="file" class="hidden" />
+            </label>
+        </div>
+
+        <!-- Lista de archivos cargados -->
+        <div class="mt-4 w-3/4 lg:w-1/2">
+            <h4 class="mb-4 text-left font-extrabold tracking-tight leading-none text-green-500 text-lg md:text-xl lg:text-2xl dark:text-white">Lista de archivos cargados</h4>
+            <ul id="file-list" class="space-y-2">
+                <!-- Elementos de la lista se agregarán aquí usando JavaScript -->
+            </ul>
+        </div>
+
+        <!-- Select de firmantes -->
+        <div class="mt-4 w-3/4 lg:w-1/2">
+            <label for="signers" class="block mb-2 text-base md:text-lg lg:text-xl font-medium text-gray-900 dark:text-gray-400">Firmador:</label>
+            <select id="signers" class="cursor-pointer bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <!-- Opciones aquí -->
+                <option value="default" selected>Nombre del Firmador - Titular</option>
+                <option value="default">Nombre del Firmador - Suplente</option>
+                <option value="default">Nombre del Firmador - Suplente</option>
+            </select>
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="mt-4 flex space-x-2">
+            <button type="button" class="px-4 py-2 bg-red-400 text-white rounded-lg">Cancelar/Volver</button>
+            <button type="submit" class="px-4 py-2 bg-green-400 text-white rounded-lg">Enviar/Subir</button>
+        </div>
+    </section>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const fileInput = document.getElementById('dropzone-file');
+
+        fileInput.addEventListener('change', function(event) {
+            const files = event.target.files;
+
+            for (const file of files) {
+                handleFileUpload(file);
+            }
+        });
+    });
+
+    function handleFileUpload(file) {
+        // Agrega el archivo a la lista con una barra de progreso y un botón de eliminar
+        const fileList = document.getElementById('file-list');
+        const li = document.createElement('li');
+        li.className = 'flex justify-between items-center bg-gray-100 p-2 rounded-lg';
+
+        // Agrega información del archivo
+        li.innerHTML = `
+            <span class="text-sm font-semibold tracking-tight leading-none w-1/3">${file.name}</span>
+            <div class="bg-gray-200 rounded h-4 w-full">
+                <div id="progress_${file.name}" class="bg-green-500 h-4 rounded" style="width: 0%;"></div>
+            </div>
+            <button onclick="removeFile('${file.name}')" class="ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Eliminar</button>
+        `;
+
+        fileList.appendChild(li);
+
+        // Simulación de carga de archivo
+        let progress = 0;
+        const interval = setInterval(() => {
+            if (progress >= 100) {
+                clearInterval(interval);
+            } else {
+                progress += 10;
+                updateProgress(file.name, progress);
+            }
+        }, 100);
+
+        // Aquí iría el código para subir el archivo y actualizar la barra de progreso
+        // Por ejemplo, usando fetch y actualizando el valor del progress
+    }
+
+    function removeFile(fileName) {
+      const fileList = document.getElementById('file-list');
+      fileList.querySelectorAll('li').forEach(li => {
+        if (li.textContent.includes(fileName)) {
+            fileList.removeChild(li);
+          }
+      });
+
+    // Si también necesitas eliminar el archivo del servidor, aquí iría ese código
+    }
+
+    function updateProgress(fileName, percent) {
+      const progressBar = document.getElementById(`progress_${fileName}`);
+      if (progressBar) {
+          progressBar.style.width = percent + '%';
+      }
+    }
+
+    function handleDragOver(event) {
+      event.preventDefault();
+      event.dataTransfer.dropEffect = 'copy';
+    }
+
+    function handleDrop(event) {
+      event.preventDefault();
+
+      const files = event.dataTransfer.files;
+      for (const file of files) {
+          handleFileUpload(file);
+      }
+    }
+</script>
+
+{% endblock %}
