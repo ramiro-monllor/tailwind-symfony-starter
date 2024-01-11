@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="bg-white dark:bg-gray-900 flex flex-col mx-auto justify-center items-center w-[32rem]">
+
+    <!-- Titulo -->
+    <div class="py-6 w-full lg:py-16">
+        <h3 class="text-base font-medium tracking-tight leading-none text-gray-700 md:text-lg lg:text-lg dark:text-white">PASO: 2</h3>
+        <h3 class="text-lg font-extrabold tracking-tight leading-none text-gray-700 md:text-xl lg:text-xl dark:text-white">Cargar Boleta</h3>
+    </div>
+
+    <!-- Formulario -->
+    <form class="w-full">
+        <div class="flex flex-col lg:gap-x-11">
+            <div class="flex flex-col w-full">
+                <label for="methods" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Medio de pago:<span class="text-red-600">*</span></label>
+                <select id="methods" class="input-select">
+                    <!-- Opciones aquí -->
+                    <option value="" selected>Medio de pago</option>
+                    <option value="">Tarjeta de credito</option>
+                    <option value="">Tarjeta de debito</option>
+                    {# {% for method in methods %}
+                    <option value="" selected>{{ method }}</option>
+                    {% endfor %} #}
+                </select>
+            </div>
+
+            <div class="flex flex-row mt-4 gap-x-7">
+                <div class="flex flex-col w-full">
+                    <label for="monto-abono" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Monto de Abono:<span class="text-red-600">*</span></label>
+                    <input type="number" id="monto-abono" class="input-default" placeholder="123456" required>
+                </div>
+                <div class="flex flex-col w-full">
+                    <label for="numero-boleta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Numero de Boleta:<span class="text-red-600">*</span></label>
+                    <input type="number" id="numero-boleta" class="input-default" placeholder="123456" required>
+                </div>
+            </div>
+
+            <div class="inline-flex items-end mt-4">
+                <div class="inline-block">
+                    <div class="-mx-4 px-4 group/nffield relative transition-colors">
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input name="campo" type="checkbox" value="1" class="sr-only peer">
+                            <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                            <span class="ms-3 ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Boleta con retención</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    <div class="w-full mt-12 flex flex-col lg:gap-x-11">
+        <div class="flex flex-row gap-x-7">
+            <div class="flex flex-col w-full">
+                <label for="saldo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Saldo</label>
+                <input disabled type="number" id="saldo" class="input-default" placeholder="123456">
+            </div>
+            <div class="flex flex-col w-full">
+                <label for="datos-boleta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Datos para boleta</label>
+                <input disabled type="number" id="datos-boleta" class="input-default" placeholder="123456">
+            </div>
+        </div>
+            <div class="flex flex-col w-full mt-4">
+                <label for="numero-boleta" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Lista de abonos previos</label>
+                <ul class="flex flex-col text-sm font-normal text-gray-900 dark:text-white list-disc list-blue-500 pl-4">
+                    <li>Diciembre</li>
+                    <li>Enero</li>
+                </ul>
+        </div>
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="mt-4 w-full flex justify-end">
+        <button type="submit" class="btn-blue">Enviar/Subir</button>
+    </div>
+
+</section>
+
+{% endblock %}

@@ -16,6 +16,6 @@ class DefaultController extends AbstractController
         // return $this->render('index.html.twig', []);
         // return $this->render('fileUpload.html.twig', []);
         // return $this->render('fileSigning.html.twig', []);
-        return $this->render('moduloCaja1.html.twig', []);
+        return $this->render('moduloCaja2.html.twig', []);
     }
 }
