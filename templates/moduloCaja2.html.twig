@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<section class="bg-white dark:bg-gray-900 flex flex-col mx-auto justify-center items-center w-[32rem]">
+<section class="bg-white dark:bg-gray-900 flex flex-col items-center mx-auto justify-center w-[32rem]">
 
     <!-- Titulo -->
     <div class="py-6 w-full lg:py-16">
@@ -13,7 +13,7 @@
     <form class="w-full">
         <div class="flex flex-col lg:gap-x-11">
             <div class="flex flex-col w-full">
-                <label for="methods" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Medio de pago:<span class="text-red-600">*</span></label>
+                <label for="methods" class="text-sm font-semibold text-gray-700 dark:text-gray-300">Medio de pago:<span class="required-dot text-red-500">*</span></label>
                 <select id="methods" class="input-select">
                     <!-- Opciones aquí -->
                     <option value="" selected>Medio de pago</option>
@@ -27,11 +27,11 @@
 
             <div class="flex flex-row mt-4 gap-x-7">
                 <div class="flex flex-col w-full">
-                    <label for="monto-abono" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Monto de Abono:<span class="text-red-600">*</span></label>
+                    <label for="monto-abono" class="text-sm font-semibold text-gray-700 dark:text-gray-300">Monto de Abono:<span class="required-dot text-red-500">*</span></label>
                     <input type="number" id="monto-abono" class="input-default" placeholder="123456" required>
                 </div>
                 <div class="flex flex-col w-full">
-                    <label for="numero-boleta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Numero de Boleta:<span class="text-red-600">*</span></label>
+                    <label for="numero-boleta" class="text-sm font-semibold text-gray-700 dark:text-gray-300">Numero de Boleta:<span class="required-dot text-red-500">*</span></label>
                     <input type="number" id="numero-boleta" class="input-default" placeholder="123456" required>
                 </div>
             </div>
@@ -54,11 +54,11 @@
     <div class="w-full mt-12 flex flex-col lg:gap-x-11">
         <div class="flex flex-row gap-x-7">
             <div class="flex flex-col w-full">
-                <label for="saldo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Saldo</label>
+                <label for="saldo" class="text-sm font-semibold text-gray-700 dark:text-gray-300">Saldo</label>
                 <input disabled type="number" id="saldo" class="input-default" placeholder="123456">
             </div>
             <div class="flex flex-col w-full">
-                <label for="datos-boleta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Datos para boleta</label>
+                <label for="datos-boleta" class="text-sm font-semibold text-gray-700 dark:text-gray-300">Datos para boleta</label>
                 <input disabled type="number" id="datos-boleta" class="input-default" placeholder="123456">
             </div>
         </div>

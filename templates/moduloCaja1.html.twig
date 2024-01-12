@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<section class="bg-white dark:bg-gray-900 flex flex-col mx-auto justify-center items-center w-[32rem]">
+<section class="bg-white dark:bg-gray-900 flex flex-col items-center mx-auto justify-center w-[32rem]"
 
     <!-- Titulo -->
     <div class="py-6 w-full lg:py-16">
@@ -11,7 +11,7 @@
 
     <!--Orden -->
     <form class="w-full">
-        <label for="numero-orden" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Numero de Orden:<span class="text-red-600">*</span></label>
+        <label for="numero-orden" class="text-sm font-semibold text-gray-700 dark:text-gray-300">Numero de Orden:<span class="required-dot text-red-500">*</span></label>
         <input type="number" id="numero-orden" class="input-default" placeholder="123456" required>
     </form>
 
