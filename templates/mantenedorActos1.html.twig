@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="bg-white dark:bg-gray-900 flex items-center flex-col">
+
+    <!-- Titulo -->
+    <div class="py-6 w-full lg:py-16">
+        <h1 class="text-xl font-bold tracking-tight leading-none text-gray-900 md:text-2xl lg:text-3xl dark:text-white">Mantenedor Actos y calidades</h1>
+    </div>
+
+    <!--Tabla -->
+    <div class="overflow-x-auto w-full">
+        <div class="my-4 mx-2 text-right">
+            <button type="" class="btn-green"><a href="/">Crear nuevo Acto</a></button>
+        </div>
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-4 py-3 text-center">Id</th>
+                    <th scope="col" class="px-4 py-3 text-center">Nombre de Acto</th>
+                    <th scope="col" class="px-4 py-3 text-center">Registro</th>
+                    <th scope="col" class="px-4 py-3 text-center">Valorización ($)</th>
+                    <th scope="col" class="px-4 py-3 text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for acto in actos %}
+                <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition-opacity duration-500">
+                    <th scope="row" class="flex items-center px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ acto.id }}
+                    </th>
+                    <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">{{ acto.nombre }}</td>
+                    <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">{{ acto.registro }}</td>
+                    <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">{{ acto.valorización}}</td>
+                    <td class="flex justify-center px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <button type="" class="btn-blue">Accion</button>
+                    </td>
+                </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">No hay actos</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+{% endblock %}
