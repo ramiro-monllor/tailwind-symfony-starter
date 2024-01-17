@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="bg-white dark:bg-gray-900 flex flex-col items-center mx-auto justify-center w-[32rem]">
+
+    <!-- Titulo -->
+    <div class="py-6 w-full lg:py-16">
+        <h3 class="text-base font-medium tracking-tight leading-none text-gray-700 md:text-lg lg:text-lg dark:text-white">PASO: 1</h3>
+        <h3 class="text-lg font-extrabold tracking-tight leading-none text-gray-700 md:text-xl lg:text-xl dark:text-white">Cargar o modificar Acto</h3>
+    </div>
+
+    <!-- Formulario -->
+    <form class="w-full">
+        <div class="flex flex-col lg:gap-x-11">
+            <div class="flex flex-row gap-x-7">
+                <div class="flex flex-col w-full">
+                    <label for="nombre-acto" class="text-sm font-semibold text-gray-700 dark:text-gray-300">Nombre de Acto<span class="required-dot text-red-500">*</span></label>
+                    <input type="text" id="nombre-acto" class="input-default" placeholder="Acto..." required>
+                </div>
+                <div class="flex flex-col w-full">
+                    <label for="valorizacion-acto" class="text-sm font-semibold text-gray-700 dark:text-gray-300">Valorización<span class="required-dot text-red-500">*</span></label>
+                    <input type="number" id="valorizacion-acto" class="input-default" placeholder="123456" required>
+                </div>
+            </div>
+            
+            <div class="flex flex-col w-full mt-4">
+                <label for="registros" class="text-sm font-semibold text-gray-700 dark:text-gray-300">Registro<span class="required-dot text-red-500">*</span></label>
+                <select id="registros" class="input-select">
+                    <option value="" selected>Registro...</option>
+                    <option value="">Registro 1</option>
+                    <option value="">Registro 2</option>
+                    <option value="">Registro 3</option>
+                </select>
+            </div>
+
+            <div class="inline-flex items-end mt-4">
+                <div class="inline-block">
+                    <div class="-mx-4 px-4 group/nffield relative transition-colors">
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input name="porcentaje" type="checkbox" value="1" class="sr-only peer">
+                            <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                            <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Porcentaje</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="inline-flex items-end mt-4">
+                <div class="inline-block">
+                    <div class="-mx-4 px-4 group/nffield relative transition-colors">
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input name="juridica" type="checkbox" value="1" class="sr-only peer">
+                            <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                            <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Juridica</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    <!-- Botones de acción -->
+    <div class="mt-4 w-full flex justify-between">
+        <button type="submit" class="btn btn-red">Eliminar Acto</button>
+        <button type="submit" class="btn btn-blue">Enviar/Subir</button>
+    </div>
+
+    <!-- SubFormulario -->
+      <div class="py-6 w-full lg:py-6 mt-7">
+        <h3 class="text-base font-medium tracking-tight leading-none text-gray-700 md:text-lg lg:text-lg dark:text-white">PASO: 2</h3>
+        <h3 class="text-lg font-extrabold tracking-tight leading-none text-gray-700 md:text-xl lg:text-xl dark:text-white">Agregar, editar o eliminar calidad</h3>
+    </div>
+    <div class="mx-auto w-full mb-4">
+        <div class="w-full mb-6 text-right">
+            <button type="button" onclick="addCalidad()" class="btn btn-green">Agregar Calidad</button>
+        </div>
+        <div class="mb-5 w-full grid gap-6 md:grid-cols-2">
+            <table id="calidades_table" class="sm:-mx-16 table-auto col-span-2">
+                <thead class="border-b-2">
+                <tr>
+                    <th class="pb-4">Descripción</th>
+                    <th class="pb-4"></th>
+                </tr>
+                </thead>
+                <tbody id="calidades">
+                </tbody>
+            </table>
+        </div>
+        <div class="w-full text-right">
+            <button type="submit" class="btn btn-blue">
+                Guardar Calidades
+            </button>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+var calidades = 1;
+function delCalidad(ele) {
+    ele.parentElement.parentElement.remove();
+}
+function addCalidad() {
+    let calidad = document.createElement("tr");
+    calidad.innerHTML = '\
+                    <td><input name="calidades['+calidades+'][nombre" type="text" required autocomplete="off" class="input-default"></td>\
+                    <td>\
+                        <button type="button" onclick="delCalidad(this)" class="text-red-600 inline-flex items-center hover:text-white border border-red-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm px-2.5 py-2.5 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">\
+                            <svg class="h-4 w-4" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">\
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>\
+                            </svg>\
+                        </button>\
+                    </td>';
+    document.getElementById("calidades").append(calidad);
+    calidades++;
+}
+</script>
+{% endblock %}

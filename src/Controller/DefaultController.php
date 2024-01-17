@@ -20,11 +20,13 @@ class DefaultController extends AbstractController
         // return $this->render('moduloCaja1.html.twig', []);
         // return $this->render('moduloCaja2.html.twig', []);
 
-        $actos = [
-            ['id' => 1, 'nombre' => 'Acto 1', 'registro' => 'Registro 1', 'valorización' => 100],
-        ];
-        return $this->render('mantenedorActos1.html.twig', [
-            'actos' => $actos,
-        ]);
+        // $actos = [
+        //     ['id' => 1, 'nombre' => 'Acto 1', 'registro' => 'Registro 1', 'valorización' => 100],
+        // ];
+        // return $this->render('mantenedorActos1.html.twig', [
+        //     'actos' => $actos,
+        // ]);
+        return $this->render('mantenedorActos2.html.twig', []);
+
     }
 }
