@@ -1,0 +1,76 @@
+
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="bg-white dark:bg-gray-900 flex items-center flex-col">
+
+    <!-- Titulo -->
+    <div class="py-6 w-full lg:py-16">
+        <h1 class="text-xl font-bold tracking-tight leading-none text-gray-900 md:text-2xl lg:text-3xl dark:text-white">Cierre De Caja</h1>
+    </div>
+
+   <!-- Selector de Fecha -->
+    <div date-rangepicker class="flex items-center">
+        <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                </svg>
+            </div>
+            <input name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Seleccionar fecha inicial">
+        </div>
+        <span class="mx-4 text-gray-500">a</span>
+        <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                </svg>
+            </div>
+            <input name="end" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Seleccionar fecha final">
+        </div>
+    </div>
+
+     <!--Tabla -->
+    <div class="overflow-x-auto w-full mt-14">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-4 py-3 text-center">id Orden De Trabajo</th>
+                    <th scope="col" class="px-4 py-3 text-center">Medio De Pago</th>
+                    <th scope="col" class="px-4 py-3 text-center">Monto Pago</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pago in pagos %}
+                <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition-opacity duration-500">
+                    <th scope="row" class="flex items-center px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ pago.idOrdenDeTrabajo }}
+                    </th>
+                    <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">{{ pago.MedioDePago }}</td>
+                    <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">{{ pago.montoPago }}</td>
+                </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">No hay pagos</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="my-4 mx-2 text-right flex justify-end">
+            <button type="" class="btn-green"><a href="/">Exportar a excel</a></button>
+        </div>
+    </div>
+
+    <div class="flex flex-col w-full mt-4">
+    <label for="numero-boleta" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Resumen de Pagos</label>
+        <ul class="flex flex-col text-sm font-normal text-gray-900 dark:text-white list-disc list-blue-500 pl-4">
+            <li>Efectivo $500.000</li>
+            <li>Tarjeta $230.000</li>
+        </ul>
+    <span class="mt-4 text-gray-900">Suma total: <strong>$830.000</strong></span>
+    </div>
+
+</section>
+
+{% endblock %}

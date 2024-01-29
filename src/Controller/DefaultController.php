@@ -26,7 +26,15 @@ class DefaultController extends AbstractController
         // return $this->render('mantenedorActos1.html.twig', [
         //     'actos' => $actos,
         // ]);
-        return $this->render('mantenedorActos2.html.twig', []);
+
+        // return $this->render('mantenedorActos2.html.twig', []);
+
+        $pagos = [
+            ['idOrdenDeTrabajo' => 1, 'MedioDePago' => 'Efectivo', 'montoPago' => '$343'],
+        ];
+        return $this->render('cierreDeCaja.html.twig', [
+            'pagos' => $pagos,
+        ]);
 
     }
 }
