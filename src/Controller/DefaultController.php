@@ -29,12 +29,14 @@ class DefaultController extends AbstractController
 
         // return $this->render('mantenedorActos2.html.twig', []);
 
-        $pagos = [
-            ['idOrdenDeTrabajo' => 1, 'MedioDePago' => 'Efectivo', 'montoPago' => '$343'],
-        ];
-        return $this->render('cierreDeCaja.html.twig', [
-            'pagos' => $pagos,
-        ]);
+        // $pagos = [
+        //     ['idOrdenDeTrabajo' => 1, 'MedioDePago' => 'Efectivo', 'montoPago' => '$343'],
+        // ];
+        // return $this->render('cierreDeCaja.html.twig', [
+        //     'pagos' => $pagos,
+        // ]);
+
+        return $this->render('trabajoMatriceria.html.twig', []);
 
     }
 }

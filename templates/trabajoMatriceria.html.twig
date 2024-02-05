@@ -1,0 +1,194 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="bg-white dark:bg-gray-900 flex items-center flex-col">
+
+    <div class="flex flex-row justify-between w-full py-6 lg:py-16">
+        <h1 class="text-base font-medium tracking-tight leading-none text-gray-900 md:text-lg lg:text-xl dark:text-white ml-12">Orden xxx</h1>
+        <div class="flex flex-row gap-x-2 mr-12">
+            <button type="button" class="btn-green">Accion 1</button>
+            <button type="button" class="btn-green">Accion 2</button>
+        </div>
+    </div>
+
+    <div class="flex flex-row">
+        <ul class="flex-column space-y space-y-4 gap-y-4 text-sm font-medium text-gray-500 dark:text-gray-400 mt-10 mr-4 mb-4 md:mb-0">
+            <li>
+                <button data-status="pendiente" data-modal-target="requirente-modal" data-modal-toggle="requirente-modal" class="block w-full md:min-w-[14rem] md:max-w-[14rem] text-white font-medium rounded-lg text-sm px-8 sm:px-16 md:px-0 py-4 text-center focus:ring-4 focus:outline-none" type="button">
+                    Requirente
+                </button>
+            </li>
+            <li>
+                <button data-status="completado" data-modal-target="requisitoria-modal" data-modal-toggle="requisitoria-modal" class="block w-full md:min-w-[14rem] md:max-w-[14rem] text-white font-medium rounded-lg text-sm px-8 sm:px-16 md:px-0 py-4 text-center focus:ring-4 focus:outline-none" type="button">
+                    Requisitoria
+                </button>
+            </li>
+            <li>
+                <button data-status="pendiente" data-modal-target="datosBoletas-modal" data-modal-toggle="datosBoletas-modal" class="block w-full md:min-w-[14rem] md:max-w-[14rem] text-white font-medium rounded-lg text-sm px-8 sm:px-16 md:px-0 py-4 text-center focus:ring-4 focus:outline-none" type="button">
+                    Datos Boletas
+                </button>
+            </li>
+            <li>
+                <button data-status="completado" data-modal-target="revisionJuridica-modal" data-modal-toggle="revisionJuridica-modal" class="block w-full md:min-w-[14rem] md:max-w-[14rem] text-white font-medium rounded-lg text-sm px-8 sm:px-16 md:px-0 py-4 text-center focus:ring-4 focus:outline-none" type="button">
+                    Revision Juridica
+                </button>
+            </li>
+        </ul>
+        <div class="flex flex-col text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
+            <ul class="flex flex-wrap -mb-px">
+                <li class="me-2">
+                    <a href="#" class="inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500" aria-current="page">Actos</a>
+                </li>
+                <li class="me-2">
+                    <a href="#" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Matriculas</a>
+                </li>
+                <li class="me-2">
+                    <a href="#" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Notas Marginales</a>
+                </li>
+                <li class="me-2">
+                    <a href="#" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Partes</a>
+                </li>
+                <li class="me-2">
+                    <a href="#" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Observaciones</a>
+                </li>
+                <li class="me-2">
+                    <a href="#" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Otro</a>
+                </li>
+            </ul>
+            <div class="p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Sección Actos</h3>
+                <p class="mb-2">Aquí verá el contenido asociado a la pestaña Actos. Al hacer clic en otra pestaña, se cambiará su visibilidad a la siguiente.</p>
+                <p>Texto de ejemplo...</p> 
+            </div>
+        </div>
+    </div>
+
+    <!-- Requirente modal -->
+    <div id="requirente-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        Requirente
+                    </h3>
+                    <button data-modal-hide="requirente-modal" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                        <span class="sr-only">Cerrar modal</span>
+                    </button>
+                </div>
+                <div class="p-4 md:p-5 space-y-4">
+                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                        Detalles Requirente
+                    </p>
+                </div>
+                <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                    <button data-modal-hide="requirente-modal" type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Requisitoria modal -->
+    <div id="requisitoria-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        Requisitoria
+                    </h3>
+                    <button data-modal-hide="requisitoria-modal" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                        <span class="sr-only">Cerrar modal</span>
+                    </button>
+                </div>
+                <div class="p-4 md:p-5 space-y-4">
+                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                        Detalles Requisitoria
+                    </p>
+                </div>
+                <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                    <button data-modal-hide="requisitoria-modal" type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Datos Boletas modal -->
+    <div id="datosBoletas-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        Datos Boletas
+                    </h3>
+                    <button data-modal-hide="datosBoletas-modal" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                        <span class="sr-only">Cerrar modal</span>
+                    </button>
+                </div>
+                <div class="p-4 md:p-5 space-y-4">
+                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                        Detalles Datos Boletas
+                    </p>
+                </div>
+                <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                    <button data-modal-hide="datosBoletas-modal" type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Revision Juridica modal -->
+    <div id="revisionJuridica-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        Datos Revision Juridica
+                    </h3>
+                    <button data-modal-hide="revisionJuridica-modal" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                        <span class="sr-only">Cerrar modal</span>
+                    </button>
+                </div>
+                <div class="p-4 md:p-5 space-y-4">
+                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                        Detalles Revision Juridica
+                    </p>
+                </div>
+                <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                    <button data-modal-hide="revisionJuridica-modal" type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const buttons = document.querySelectorAll('[data-modal-target]');
+        
+        buttons.forEach(button => {
+            const status = button.dataset.status;
+            
+            if (status === 'pendiente') {
+                button.classList.add('btn-red');
+            } else if (status === 'completado') {
+                button.classList.add('btn-green');
+            }
+        });
+    });
+</script>
+{% endblock %}
