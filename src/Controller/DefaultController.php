@@ -36,7 +36,8 @@ class DefaultController extends AbstractController
         //     'pagos' => $pagos,
         // ]);
 
-        return $this->render('trabajoMatriceria.html.twig', []);
+        // return $this->render('trabajoMatriceria.html.twig', []);
+        return $this->render('calificacionJuridica.html.twig', []);
 
     }
 }
