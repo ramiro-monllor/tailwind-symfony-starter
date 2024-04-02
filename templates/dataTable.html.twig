@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="bg-white dark:bg-gray-900 flex items-center flex-col">
+
+<table id="myTable" class="display">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Posición</th>
+      <th>Oficina</th>
+      <th>Edad</th>
+      <th>Fecha de inicio</th>
+      <th>Salario</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+ <tbody>
+    <!-- Ejemplo de datos, deberías reemplazarlos con datos reales -->
+    <tr>
+      <td>Juan Pérez</td>
+      <td>Desarrollador</td>
+      <td>Madrid</td>
+      <td>30</td>
+      <td>2018-04-10</td>
+      <td>$50000</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Ana Gómez</td>
+      <td>Analista</td>
+      <td>Barcelona</td>
+      <td>28</td>
+      <td>2019-08-15</td>
+      <td>$45000</td>
+      <td></td>
+    </tr>
+    <!-- Añade más filas según sea necesario -->
+  </tbody>
+</table>
+
+</section>
+
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var table = $('#myTable').DataTable({
+        columnDefs: [{
+            targets: -1,
+            data: null,
+            defaultContent: "<button class='editButton'>Edit</button> <button class='deleteButton'>Delete</button>"
+        }]
+    });
+
+    // Convertir celda en input editable al hacer clic en ella
+    $('#myTable tbody').on('click', 'td', function() {
+        if (!$(this).hasClass('actions')) {
+            var currentText = $(this).text();
+            var inputField = $('<input>', {
+                type: 'text',
+                value: currentText,
+                css: { 'width': '100%' }
+            });
+            $(this).html(inputField);
+            inputField.focus();
+        }
+    });
+
+    // Actualizar la celda al salir del input (o puedes usar un botón de guardar)
+    $('#myTable tbody').on('blur', 'input', function() {
+        var $cell = $(this).closest('td');
+        var newText = $(this).val();
+        var cellIndex = table.cell($cell).index();
+        var rowData = table.row(cellIndex.row).data();
+        
+        // Aquí puedes añadir más lógica si necesitas enviar otros datos
+        $.ajax({
+            url: '/update-cell', // Debes cambiar esta URL por tu endpoint de actualización
+            method: 'POST',
+            data: {
+                id: rowData[0], // El ID del registro, asumiendo que está en la primera columna
+                column: cellIndex.column, // El índice de la columna que se está editando
+                newValue: newText // El nuevo valor de la celda
+            },
+            success: function(response) {
+                if (response.status === 'success') {
+                    // Actualiza el valor de la celda con el nuevo texto
+                    $cell.html(newText);
+                }
+            }
+        });
+    });
+});
+  </script>
+{% endblock %}

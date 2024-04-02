@@ -5,7 +5,10 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
@@ -37,7 +40,30 @@ class DefaultController extends AbstractController
         // ]);
 
         // return $this->render('trabajoMatriceria.html.twig', []);
-        return $this->render('calificacionJuridica.html.twig', []);
-
+        return $this->render('dataTable.html.twig', []);
     }
+
+     /**
+     * @Route("/payment/edit/{id}", name="payment_edit", methods={"POST"})
+     */
+    // public function editPayment(Request $request, int $id): JsonResponse
+    // {
+    //     // Aquí implementarías la lógica para editar el pago.
+    //     // Por ejemplo, obtener los datos del pago por su ID, actualizarlos y guardar los cambios.
+
+    //     // Retornar una respuesta JSON para la solicitud AJAX.
+    //     return new JsonResponse(['status' => 'success', 'message' => 'Pago editado correctamente.']);
+    // }
+
+    /**
+     * @Route("/payment/delete/{id}", name="payment_delete", methods={"POST"})
+     */
+    // public function deletePayment(int $id): JsonResponse
+    // {
+    //     // Aquí implementarías la lógica para eliminar el pago.
+    //     // Por ejemplo, encontrar el pago por su ID y eliminarlo de la base de datos.
+
+    //     // Retornar una respuesta JSON para la solicitud AJAX.
+    //     return new JsonResponse(['status' => 'success', 'message' => 'Pago eliminado correctamente.']);
+    // }
 }

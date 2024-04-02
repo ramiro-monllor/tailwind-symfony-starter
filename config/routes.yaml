@@ -7,3 +7,13 @@ controllers:
 index:
     path: /
     controller: App\Controller\DefaultController::index
+
+edit_payment:
+  path: /payment/edit/{id}
+  controller: App\Controller\PaymentController::edit
+  methods: [POST]
+
+delete_payment:
+  path: /payment/delete/{id}
+  controller: App\Controller\PaymentController::delete
+  methods: [POST]
